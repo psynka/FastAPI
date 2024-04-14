@@ -1,29 +1,30 @@
 import requests
-from fastapi import HTTPException
+
 
 url = 'http://127.0.0.1:8000/predict'
+#url = 'http://127.0.0.1:8081/predict'
 
-# The client should pass the API key in the headers (for main api)
 headers = { 
     'Content-Type': 'application/json',
     'Authorization': 'Bearer xgb0fws23'
 }
 
-user_input = {  
-                'fixed_acidity': 8.784,
-                'volatile_acidity': 0.580,
-                'citric_acid': 0.318,
-                'residual_sugar': 2.805,
-                'chlorides': 0.066,
-                'free_sulfur_dioxide': 10.0,
-                'total_sulfur_dioxide': 27.0,
-                'density': 0.9964,
-                'pH': 3.32,
-                'sulphates': 0.67,
-                'alcohol': '11.273'     # 9.8
-            }
+var = {"shop_id": 1,
+       "title": "hz",
+       "description": "description",
+       "price": 999.0,
+       "type": "JEANS",
+       "wear_degree": "FIRST",
+       "sex": "M",
+       "status": "IN_SALE",
+       "created_at": "2023-07-28",
+       "size": "M",
+       "brand": "Lewis",
+       "color": "Blue",
+       "material": "leather",
+       "season": "SUMMER"}
 
-response = requests.post(url, json = user_input, headers = headers)
+response = requests.post(url, json = var, headers = headers)
 
 print(response.status_code)
 print(response.json())
